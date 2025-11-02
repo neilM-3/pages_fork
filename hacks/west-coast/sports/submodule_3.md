@@ -22,7 +22,7 @@ footer:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Francisco - Making API Calls</title>
+    <title>San Francisco - Step 3: Send Request & Get Response</title>
     <style>
         * {
             margin: 0;
@@ -39,18 +39,19 @@ footer:
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         .header {
             background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
             color: white;
             padding: 40px;
-            border-radius: 15px;
             text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(170, 0, 0, 0.2);
         }
 
         .header h1 {
@@ -58,51 +59,89 @@ footer:
             margin-bottom: 10px;
         }
 
-        .section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #AA0000;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 3px solid #B3995D;
-            padding-bottom: 10px;
-        }
-
-        .explanation {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #B3995D;
-            margin: 20px 0;
+        .header p {
+            opacity: 0.9;
             font-size: 1.1em;
-            line-height: 1.8;
         }
 
-        .step-box {
-            background: white;
-            border: 3px solid #B3995D;
+        .concept-box {
+            background: #ffffff;
             padding: 25px;
-            border-radius: 10px;
-            margin: 20px 0;
+            border-left: 5px solid #B3995D;
+            margin: 25px;
+            border-radius: 8px;
         }
 
-        .step-number {
-            background: #AA0000;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: inline-flex;
+        .concept-box h2 {
+            color: #AA0000 !important;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .concept-box p {
+            color: #000000 !important;
+            line-height: 1.8;
+            font-weight: 500;
+            font-size: 1.05em;
+        }
+
+        .concept-box strong {
+            color: #AA0000 !important;
+        }
+
+        .step-section {
+            background: white;
+            padding: 35px;
+            margin: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #B3995D;
+        }
+
+        .step-section h2 {
+            color: #AA0000 !important;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .two-parts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .part-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 3px solid #dee2e6;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .part-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(170, 0, 0, 0.2);
+            border-color: #B3995D;
+        }
+
+        .part-card h3 {
+            color: #AA0000 !important;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 10px;
+        }
+
+        .part-icon {
             font-size: 1.5em;
-            font-weight: bold;
+        }
+
+        .part-card p {
+            color: #495057 !important;
+            line-height: 1.8;
             margin-bottom: 15px;
         }
 
@@ -114,54 +153,233 @@ footer:
             font-family: 'Courier New', monospace;
             margin: 15px 0;
             overflow-x: auto;
-            font-size: 1em;
+            font-size: 0.95em;
         }
 
-        .highlight-box {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            padding: 20px;
-            border-radius: 10px;
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
             margin: 20px 0;
         }
 
-        .highlight-box strong {
-            color: #AA0000;
-            font-size: 1.1em;
+        .status-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        .btn {
+        .status-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-200 {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        }
+
+        .status-404 {
+            border-color: #ffc107;
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        }
+
+        .status-401 {
+            border-color: #dc3545;
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+        }
+
+        .status-card h4 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+
+        .status-200 h4 {
+            color: #28a745;
+        }
+
+        .status-404 h4 {
+            color: #856404;
+        }
+
+        .status-401 h4 {
+            color: #721c24;
+        }
+
+        .status-card p {
+            color: #495057 !important;
+            font-size: 0.9em;
+        }
+
+        .interactive-demo {
+            background: white;
+            padding: 35px;
+            margin: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #AA0000;
+        }
+
+        .interactive-demo h2 {
+            color: #AA0000 !important;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .demo-description {
+            text-align: center;
+            color: #495057 !important;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .stadium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stadium-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 3px solid #dee2e6;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stadium-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(170, 0, 0, 0.2);
+            border-color: #B3995D;
+        }
+
+        .stadium-card h3 {
+            color: #AA0000 !important;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .stadium-card p {
+            color: #495057 !important;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .api-code {
+            background: #2c3e50;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
+        .code-input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #B3995D;
+        }
+
+        .code-input-section h3 {
+            color: #AA0000 !important;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .code-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #B3995D;
+        }
+
+        .fetch-btn {
             background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 30px;
             border-radius: 8px;
+            font-size: 1em;
             font-weight: bold;
             cursor: pointer;
-            font-size: 1.1em;
             transition: all 0.3s;
-            display: inline-block;
-            margin: 10px 5px;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
+        .fetch-btn:hover {
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(170, 0, 0, 0.3);
+        }
+
+        .response-output {
+            background: #2c3e50;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin-top: 15px;
+            min-height: 100px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .response-output.error {
+            background: #dc3545;
+            color: white;
+        }
+
+        .response-output.success {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .quiz-section {
             background: white;
-            padding: 30px;
+            padding: 35px;
+            margin: 25px;
             border-radius: 15px;
-            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             border: 3px solid #B3995D;
         }
 
         .quiz-section h2 {
-            color: #AA0000;
+            color: #AA0000 !important;
             text-align: center;
             margin-bottom: 30px;
-            font-size: 2em;
+            font-size: 1.8em;
         }
 
         .quiz-question {
@@ -177,8 +395,8 @@ footer:
         }
 
         .question-text {
-            color: #333;
-            font-size: 1.3em;
+            color: #333 !important;
+            font-size: 1.2em;
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -191,7 +409,7 @@ footer:
             cursor: pointer;
             margin: 10px 0;
             transition: all 0.3s;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
 
         .quiz-option:hover {
@@ -202,14 +420,14 @@ footer:
         .quiz-option.correct {
             border-color: #28a745;
             background: #d4edda;
-            color: #155724;
+            color: #155724 !important;
             font-weight: bold;
         }
 
         .quiz-option.incorrect {
             border-color: #dc3545;
             background: #f8d7da;
-            color: #721c24;
+            color: #721c24 !important;
         }
 
         .quiz-option.disabled {
@@ -231,13 +449,13 @@ footer:
 
         .feedback.correct {
             background: #d4edda;
-            color: #155724;
+            color: #155724 !important;
             border: 2px solid #28a745;
         }
 
         .feedback.incorrect {
             background: #f8d7da;
-            color: #721c24;
+            color: #721c24 !important;
             border: 2px solid #dc3545;
         }
 
@@ -293,87 +511,162 @@ footer:
         .restart-btn:hover {
             background: #9d864f;
         }
+
+        .key-learning {
+            background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
+            color: white;
+            padding: 30px;
+            margin: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .key-learning h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .key-learning p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .remember-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .remember-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .remember-box li {
+            padding: 8px 0;
+            font-size: 1.05em;
+        }
+
+        .remember-box li::before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏟️ San Francisco: API Calls</h1>
-            <p>Learn the 3 Simple Steps to Get Data from the Internet</p>
+            <h1>🚀 Step 3: Send Request & Get Response</h1>
+            <p>Where the Magic Happens - Talking to the Server</p>
         </div>
 
-        <div class="section">
-            <h2>What is an API?</h2>
-            <div class="explanation">
-                <strong>API = Application Programming Interface</strong><br><br>
-                Think of it like ordering food at a restaurant:
-                <ul style="margin-top: 10px; margin-left: 20px;">
-                    <li>🍽️ <strong>You</strong> = Your app/website</li>
-                    <li>👨‍🍳 <strong>Kitchen</strong> = The server with data</li>
-                    <li>🧑‍💼 <strong>Waiter</strong> = The API (takes your order to the kitchen and brings back food)</li>
-                </ul>
-            </div>
+        <div class="concept-box">
+            <h2>What is Step 3?</h2>
+            <p>This is where you <strong>actually communicate</strong> with the server. You send your URL with code, and the server sends back an answer. Think of it like handing your order to a waiter and getting your food back!</p>
+        </div>
 
-            <div class="highlight-box">
-                <strong>Real Example:</strong> When you check sports scores on your phone, the app uses an API to ask a server "What's the score of the Warriors game?" and the server sends back the answer!
+        <div class="step-section">
+            <h2>The Two Parts of Step 3</h2>
+            <div class="two-parts">
+                <div class="part-card">
+                    <h3><span class="part-icon">📤</span> Part A: Send the Request</h3>
+                    <p>Use code to send your URL to the server over the internet.</p>
+                    <p><strong>Python Example:</strong></p>
+                    <div class="code-box">response = requests.get("https://api.example.com/stadium")</div>
+                    <p><strong>JavaScript Example:</strong></p>
+                    <div class="code-box">fetch("https://api.example.com/stadium")</div>
+                    <p style="margin-top: 15px; font-style: italic; color: #666;">This is like handing your written order to the waiter!</p>
+                </div>
+
+                <div class="part-card">
+                    <h3><span class="part-icon">📥</span> Part B: Receive the Response</h3>
+                    <p>The server sends back TWO things:</p>
+                    <p><strong>1. Status Code</strong> - Did it work?</p>
+                    <p><strong>2. The Data</strong> - Your requested information in JSON format</p>
+                    <p style="margin-top: 15px; font-style: italic; color: #666;">This is like the waiter bringing your food or saying "Sorry, we're out!"</p>
+                </div>
             </div>
         </div>
 
-        <div class="section">
-            <h2>The 3 Steps to Make an API Call</h2>
+        <div class="step-section">
+            <h2>Understanding Status Codes</h2>
+            <p style="text-align: center; color: #495057; margin-bottom: 25px;">The server always tells you if your request worked with a status code:</p>
+            <div class="status-grid">
+                <div class="status-card status-200">
+                    <h4>200</h4>
+                    <p><strong>✅ OK</strong></p>
+                    <p>Success! Here's your data</p>
+                </div>
+                <div class="status-card status-404">
+                    <h4>404</h4>
+                    <p><strong>🤷 Not Found</strong></p>
+                    <p>That data doesn't exist</p>
+                </div>
+                <div class="status-card status-401">
+                    <h4>401</h4>
+                    <p><strong>🔒 Unauthorized</strong></p>
+                    <p>Wrong API key</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: #AA0000; font-weight: bold; margin-top: 20px;">Always check the status code first! 200 = Success!</p>
+        </div>
+
+        <div class="interactive-demo">
+            <h2>🏟️ Try It Yourself: NorCal Stadium API</h2>
+            <p class="demo-description">Practice making API calls to get information about 5 major NorCal stadiums!</p>
             
-            <div class="step-box">
-                <div class="step-number">1</div>
-                <h3 style="color: #AA0000; margin-bottom: 15px;">Get Permission (API Key)</h3>
-                <p style="margin-bottom: 15px;">Just like you need a ticket to enter a stadium, you need an API key to access data.</p>
-                <div class="code-box">API Key: sf_abc123xyz789</div>
-                <p style="margin-top: 10px; color: #666; font-style: italic;">This proves you're allowed to get the data</p>
+            <div class="stadium-grid">
+                <div class="stadium-card">
+                    <h3>🏟️ Levi's Stadium</h3>
+                    <p>San Francisco 49ers (NFL)</p>
+                    <div class="api-code">levis</div>
+                </div>
+                <div class="stadium-card">
+                    <h3>⚾ Oracle Park</h3>
+                    <p>SF Giants (MLB)</p>
+                    <div class="api-code">oracle</div>
+                </div>
+                <div class="stadium-card">
+                    <h3>🏀 Chase Center</h3>
+                    <p>Golden State Warriors (NBA)</p>
+                    <div class="api-code">chase</div>
+                </div>
+                <div class="stadium-card">
+                    <h3>⚾ Oakland Coliseum</h3>
+                    <p>Oakland Athletics (MLB)</p>
+                    <div class="api-code">coliseum</div>
+                </div>
+                <div class="stadium-card">
+                    <h3>⚽ PayPal Park</h3>
+                    <p>San Jose Earthquakes (MLS)</p>
+                    <div class="api-code">paypal</div>
+                </div>
             </div>
 
-            <div class="step-box">
-                <div class="step-number">2</div>
-                <h3 style="color: #AA0000; margin-bottom: 15px;">Build Your Request (URL)</h3>
-                <p style="margin-bottom: 15px;">Tell the computer exactly what data you want by building a special web address (URL).</p>
-                <div class="code-box">https://api.example.com/stadium?name=chase_center&key=abc123</div>
-                <p style="margin-top: 10px; color: #666;">
-                    <strong>This URL has 3 parts:</strong><br>
-                    • <strong>Base URL:</strong> Where to look<br>
-                    • <strong>Endpoint:</strong> What you want (stadium info)<br>
-                    • <strong>Parameters:</strong> Details (which stadium + your key)
+            <div class="code-input-section">
+                <h3>📝 Enter Your API Call</h3>
+                <p style="text-align: center; color: #495057; margin-bottom: 15px;">
+                    Type the code format: <code style="background: #e9ecef; padding: 3px 8px; border-radius: 4px;">requests.get("stadium_code")</code>
+                </p>
+                <div class="input-row">
+                    <input type="text" 
+                           id="apiInput" 
+                           class="code-input" 
+                           placeholder='requests.get("levis")'
+                           onkeypress="if(event.key === 'Enter') fetchStadium()">
+                    <button class="fetch-btn" onclick="fetchStadium()">🚀 Send Request</button>
+                </div>
+                <p style="text-align: center; color: #666; font-size: 0.9em; margin-top: 10px;">
+                    Example: Type <strong>requests.get("chase")</strong> to get Chase Center info
                 </p>
             </div>
 
-            <div class="step-box">
-                <div class="step-number">3</div>
-                <h3 style="color: #AA0000; margin-bottom: 15px;">Get the Response (JSON Data)</h3>
-                <p style="margin-bottom: 15px;">The server sends back data in JSON format - a way computers share information.</p>
-                <div class="code-box">{
-  "name": "Chase Center",
-  "team": "Golden State Warriors",
-  "capacity": 18064,
-  "opened": 2019
-}</div>
-                <p style="margin-top: 10px; color: #666; font-style: italic;">Your app can now display this data to users!</p>
-            </div>
-        </div>
+            <div id="apiResponse" class="response-output">
+Waiting for your API request...
 
-        <div class="section">
-            <h2>🎮 Try It Yourself!</h2>
-            <div class="explanation">
-                Click the button below to see a simulated API call in action. Watch how the three steps work together!
-            </div>
-            
-            <button class="btn" onclick="runDemo()">🚀 Make an API Call</button>
-            
-            <div id="demoOutput" style="margin-top: 20px;"></div>
-        </div>
-
-        <div class="section" style="background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%); color: white;">
-            <h2 style="color: white; border-bottom: 3px solid white;">🎯 Remember This!</h2>
-            <div style="font-size: 1.2em; line-height: 1.8;">
-                Every time an app shows you live data (weather, sports scores, social media posts), it's making API calls using these same 3 steps:
-                <br><br>
-                <strong>1. Permission (API Key)</strong> → <strong>2. Request (URL)</strong> → <strong>3. Response (JSON)</strong>
+Try typing: requests.get("levis") or requests.get("oracle")
             </div>
         </div>
 
@@ -381,90 +674,160 @@ footer:
             <h2>🎯 Test Your Knowledge</h2>
             
             <div class="quiz-question active" id="q1">
-                <div class="question-text">Question 1: What is an API key used for?</div>
+                <div class="question-text">Question 1: What are the TWO things the server sends back in Step 3?</div>
                 <div class="quiz-option" onclick="checkAnswer(1, 0, false)">
-                    A) To make your computer faster
+                    A) Username and Password
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(1, 1, true)">
-                    B) To prove you have permission to access data
+                    B) Status Code and Data
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(1, 2, false)">
-                    C) To store passwords
+                    C) Website URL and Images
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(1, 3, false)">
-                    D) To create websites
+                    D) API Key and Token
                 </div>
                 <div class="feedback" id="feedback1"></div>
                 <button class="next-btn" id="next1" onclick="nextQuestion(2)">Next Question →</button>
             </div>
 
             <div class="quiz-question" id="q2">
-                <div class="question-text">Question 2: What are the 3 steps of making an API call in order?</div>
+                <div class="question-text">Question 2: What does a status code of 200 mean?</div>
                 <div class="quiz-option" onclick="checkAnswer(2, 0, false)">
-                    A) Response → Request → Key
+                    A) Error - data not found
                 </div>
-                <div class="quiz-option" onclick="checkAnswer(2, 1, true)">
-                    B) Key → Request → Response
+                <div class="quiz-option" onclick="checkAnswer(2, 1, false)">
+                    C) Permission denied
                 </div>
-                <div class="quiz-option" onclick="checkAnswer(2, 2, false)">
-                    C) Request → Key → Response
+                <div class="quiz-option" onclick="checkAnswer(2, 2, true)">
+                    B) Success - here's your data!
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(2, 3, false)">
-                    D) Key → Response → Request
+                    D) Server is down
                 </div>
                 <div class="feedback" id="feedback2"></div>
-                <button class="next-btn" id="next2" onclick="nextQuestion(3)">Next Question →</button>
-            </div>
-
-            <div class="quiz-question" id="q3">
-                <div class="question-text">Question 3: What format does an API usually send data back in?</div>
-                <div class="quiz-option" onclick="checkAnswer(3, 0, false)">
-                    A) PDF
-                </div>
-                <div class="quiz-option" onclick="checkAnswer(3, 1, true)">
-                    B) JSON
-                </div>
-                <div class="quiz-option" onclick="checkAnswer(3, 2, false)">
-                    C) MP3
-                </div>
-                <div class="quiz-option" onclick="checkAnswer(3, 3, false)">
-                    D) JPG
-                </div>
-                <div class="feedback" id="feedback3"></div>
-                <button class="next-btn" id="next3" onclick="showResults()">See Results →</button>
+                <button class="next-btn" id="next2" onclick="showResults()">See Results →</button>
             </div>
 
             <div class="quiz-results" id="results">
                 <h3 style="color: #AA0000; font-size: 2em;">🎉 Quiz Complete!</h3>
-                <div class="score" id="finalScore">0/3</div>
+                <div class="score" id="finalScore">0/2</div>
                 <p id="scoreMessage" style="font-size: 1.2em; color: #666;"></p>
                 <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
+            </div>
+        </div>
+
+        <div class="key-learning">
+            <h3>🎯 Key Learning</h3>
+            <p>Step 3 is where you actually talk to the server using code. You send your request with requests.get(), and the server responds with a status code (200 = success!) and your data in JSON format.</p>
+            
+            <div class="remember-box">
+                <strong style="font-size: 1.2em; display: block; margin-bottom: 10px;">Remember:</strong>
+                <ul>
+                    <li>Use code like requests.get() to send your request</li>
+                    <li>Always check the status code first</li>
+                    <li>200 means success - you got your data!</li>
+                    <li>Handle errors - don't assume it will always work</li>
+                </ul>
             </div>
         </div>
     </div>
 
     <script>
+        const stadiumData = {
+            levis: {
+                name: "Levi's Stadium",
+                sport: "Football",
+                team: "San Francisco 49ers",
+                league: "NFL",
+                capacity: 68500,
+                location: "Santa Clara, CA",
+                opened: 2014,
+                surface: "Grass",
+                superbowls_hosted: 1
+            },
+            oracle: {
+                name: "Oracle Park",
+                sport: "Baseball",
+                team: "San Francisco Giants",
+                league: "MLB",
+                capacity: 41915,
+                location: "San Francisco, CA",
+                opened: 2000,
+                surface: "Grass",
+                world_series: 3
+            },
+            chase: {
+                name: "Chase Center",
+                sport: "Basketball",
+                team: "Golden State Warriors",
+                league: "NBA",
+                capacity: 18064,
+                location: "San Francisco, CA",
+                opened: 2019,
+                surface: "Hardwood",
+                championships: 7
+            },
+            coliseum: {
+                name: "Oakland Coliseum",
+                sport: "Baseball",
+                team: "Oakland Athletics",
+                league: "MLB",
+                capacity: 46847,
+                location: "Oakland, CA",
+                opened: 1966,
+                surface: "Grass",
+                world_series: 4
+            },
+            paypal: {
+                name: "PayPal Park",
+                sport: "Soccer",
+                team: "San Jose Earthquakes",
+                league: "MLS",
+                capacity: 18000,
+                location: "San Jose, CA",
+                opened: 2015,
+                surface: "Grass",
+                mls_cups: 2
+            }
+        };
+
+        function fetchStadium() {
+            const input = document.getElementById('apiInput').value.trim();
+            const output = document.getElementById('apiResponse');
+
+            // Parse the input
+            const match = input.match(/requests\.get\s*\(\s*["']([^"']+)["']\s*\)/);
+            
+            if (!match) {
+                output.className = 'response-output error';
+                output.textContent = '❌ ERROR: Invalid syntax!\n\nExpected format: requests.get("stadium_code")\n\nExample: requests.get("levis")';
+                return;
+            }
+
+            const stadiumCode = match[1].toLowerCase();
+
+            if (!stadiumData[stadiumCode]) {
+                output.className = 'response-output error';
+                output.textContent = `❌ Status Code: 404 Not Found\n\nError: Stadium "${stadiumCode}" not found in database.\n\nAvailable stadiums: levis, oracle, chase, coliseum, paypal`;
+                return;
+            }
+
+            // Success response
+            const response = {
+                status: 200,
+                statusText: "OK",
+                message: "Success",
+                data: stadiumData[stadiumCode],
+                timestamp: new Date().toISOString()
+            };
+
+            output.className = 'response-output success';
+            output.textContent = JSON.stringify(response, null, 2);
+        }
+
         let score = 0;
         let currentQuestion = 1;
-
-        function runDemo() {
-            const output = document.getElementById('demoOutput');
-            output.innerHTML = '<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #B3995D;">';
-            
-            setTimeout(() => {
-                output.innerHTML += '<p style="color: #AA0000; font-weight: bold; margin: 10px 0;">✓ Step 1: Got API Key: sf_demo123</p>';
-            }, 500);
-            
-            setTimeout(() => {
-                output.innerHTML += '<p style="color: #AA0000; font-weight: bold; margin: 10px 0;">✓ Step 2: Built URL: https://api.example.com/stadium?name=chase_center&key=sf_demo123</p>';
-            }, 1500);
-            
-            setTimeout(() => {
-                output.innerHTML += '<p style="color: #AA0000; font-weight: bold; margin: 10px 0;">✓ Step 3: Received Response:</p>';
-                output.innerHTML += '<div class="code-box" style="margin-top: 10px;">{\n  "name": "Chase Center",\n  "team": "Warriors",\n  "capacity": 18064\n}</div>';
-                output.innerHTML += '<p style="color: #28a745; font-weight: bold; margin-top: 15px; font-size: 1.2em;">✅ Success! Data retrieved!</p></div>';
-            }, 2500);
-        }
 
         function checkAnswer(questionNum, optionIndex, isCorrect) {
             const question = document.getElementById(`q${questionNum}`);
@@ -482,9 +845,9 @@ footer:
             } else {
                 options[optionIndex].classList.add('incorrect');
                 feedback.className = 'feedback incorrect show';
-                feedback.textContent = '❌ Not quite. Try reviewing the lesson above!';
+                feedback.textContent = '❌ Not quite. Review the lesson above!';
                 
-                options.forEach((opt, idx) => {
+                options.forEach((opt) => {
                     if (opt.textContent.includes('B)')) {
                         opt.classList.add('correct');
                     }
@@ -501,16 +864,16 @@ footer:
         }
 
         function showResults() {
-            document.getElementById('q3').classList.remove('active');
+            document.getElementById('q2').classList.remove('active');
             document.getElementById('results').classList.add('show');
-            document.getElementById('finalScore').textContent = `${score}/3`;
+            document.getElementById('finalScore').textContent = `${score}/2`;
             
             const message = document.getElementById('scoreMessage');
-            if (score === 3) {
-                message.textContent = '🌟 Perfect! You understand APIs!';
+            if (score === 2) {
+                message.textContent = '🌟 Perfect! You understand Step 3!';
                 message.style.color = '#28a745';
-            } else if (score === 2) {
-                message.textContent = '👍 Good job! Review the lesson to master it.';
+            } else if (score === 1) {
+                message.textContent = '👍 Good start! Review the lesson to master it.';
                 message.style.color = '#ffc107';
             } else {
                 message.textContent = '📚 Keep learning! Try reading through the lesson again.';
