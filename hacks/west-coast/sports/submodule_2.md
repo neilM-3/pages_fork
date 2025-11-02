@@ -1,22 +1,4 @@
----
-layout: opencs
-title: "Los Angeles"
-description: "Submodule 2 of Backend Development Mini-Quest"
-permalink: /west-coast/backend/submodule_2/
-parent: "Backend Development"
-team: "Zombies"
-submodule: 2
-categories: [CSP, Submodule, Backend]
-tags: [backend, submodule, zombies]
-author: "Zombies Team"
-date: 2025-10-21
-microblog: True
-footer:
-  previous: /west-coast/backend/submodule_1/
-  home: /west-coast/sports/
-  next: /west-coast/backend/submodule_3/
----
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -634,12 +616,12 @@ footer:
             </div>
 
             <div class="challenge-card">
-                <h3>Challenge 3: Search for Angel Stadium</h3>
-                <p>Build a URL to search for venues/stadiums named "Angel Stadium".</p>
+                <h3>Challenge 3: Search for USC Trojans Players</h3>
+                <p>Build a URL to search for players on the USC Trojans team.</p>
                 <input type="text" class="challenge-input" id="challenge3" placeholder="Type your URL here...">
                 <button class="check-button" onclick="checkChallenge(3)">Check Answer</button>
                 <div class="feedback" id="feedback3"></div>
-                <div class="hint">💡 Hint: Use endpoint "searchvenues.php" with parameter "?t=Angel%20Stadium" (spaces become %20)</div>
+                <div class="hint">💡 Hint: Use endpoint "searchplayers.php" with parameter "?t=USC_Trojans" (use underscore for spaces)</div>
             </div>
         </div>
     </div>
@@ -729,9 +711,8 @@ footer:
                     correct = input.toLowerCase() === correctAnswer.toLowerCase();
                     break;
                 case 3:
-                    correctAnswer = 'https://www.thesportsdb.com/api/v1/json/3/searchvenues.php?t=Angel%20Stadium';
-                    const alt = 'https://www.thesportsdb.com/api/v1/json/3/searchvenues.php?t=Angel+Stadium';
-                    correct = input.toLowerCase() === correctAnswer.toLowerCase() || input.toLowerCase() === alt.toLowerCase();
+                    correctAnswer = 'https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?t=USC_Trojans';
+                    correct = input.toLowerCase() === correctAnswer.toLowerCase();
                     break;
             }
 
