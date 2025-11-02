@@ -17,13 +17,11 @@ footer:
   next: /west-coast/backend/submodule_4/
 ---
 
- 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Francisco - Step 3: Send Request & Get Response</title>
+    <title>San Francisco - Sending & Receiving API Responses</title>
     <style>
         * {
             margin: 0;
@@ -240,6 +238,7 @@ footer:
             color: #495057 !important;
             margin-bottom: 25px;
             font-size: 1.05em;
+            line-height: 1.6;
         }
 
         .stadium-grid {
@@ -270,9 +269,16 @@ footer:
             font-size: 1.2em;
         }
 
-        .stadium-card p {
+        .stadium-card .team-info {
             color: #495057 !important;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .stadium-card .location-info {
+            color: #6c757d !important;
+            font-size: 0.85em;
             margin-bottom: 15px;
         }
 
@@ -535,43 +541,42 @@ footer:
         .key-learning {
             background: linear-gradient(135deg, #002D62 0%, #FFC425 100%);
             color: white;
-            padding: 25px;
+            padding: 30px;
             margin: 25px;
             border-radius: 12px;
-            text-align: center;
         }
 
         .key-learning h3 {
-            margin-bottom: 10px;
-            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
         }
 
-        .key-learning p {
-            font-size: 1.05em;
-            line-height: 1.6;
-        }
-
-        .remember-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 10px;
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
-        .remember-box ul {
-            list-style: none;
-            padding: 0;
+        .takeaway-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .remember-box li {
-            padding: 8px 0;
-            font-size: 1.05em;
+        .takeaway-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .remember-box li::before {
-            content: "✓ ";
-            font-weight: bold;
-            margin-right: 8px;
+        .takeaway-card p {
+            font-size: 1em;
+            line-height: 1.5;
         }
 
         #scoreMessage {
@@ -582,97 +587,106 @@ footer:
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Step 3: Send Request & Get Response</h1>
-            <p>Where the Magic Happens - Talking to the Server</p>
+            <h1>🚀 Sending & Receiving Responses in APIs</h1>
+            <p>Learn How Your Code Talks to Servers and Gets Data Back</p>
         </div>
 
         <div class="concept-box">
-            <h2>What is Step 3?</h2>
-            <p>This is where you <strong>actually communicate</strong> with the server. You send your URL with code, and the server sends back an answer. Think of it like handing your order to a waiter and getting your food back!</p>
+            <h2>What Does This Mean?</h2>
+            <p>When you make an API call, you're <strong>sending a request</strong> to a server and <strong>receiving a response</strong>. It's like asking a librarian for a book - you ask (send request), and they either hand you the book or tell you it's not available (receive response).</p>
         </div>
 
         <div class="step-section">
-            <h2>The Two Parts of Step 3</h2>
+            <h2>The Request-Response Cycle</h2>
+            <p>Every API interaction has two parts that work together:</p>
             <div class="two-parts">
                 <div class="part-card">
-                    <h3><span class="part-icon">📤</span> Part A: Send the Request</h3>
-                    <p>Use code to send your URL to the server over the internet.</p>
+                    <h3><span class="part-icon">📤</span> Sending the Request</h3>
+                    <p>Your code sends a message to the server asking for specific data. This happens using methods like <code>requests.get()</code> in Python or <code>fetch()</code> in JavaScript.</p>
                     <p><strong>Python Example:</strong></p>
-                    <div class="code-box">response = requests.get("https://api.example.com/stadium")</div>
+                    <div class="code-box">response = requests.get("https://api.example.com/data")</div>
                     <p><strong>JavaScript Example:</strong></p>
-                    <div class="code-box">fetch("https://api.example.com/stadium")</div>
-                    <p style="margin-top: 15px; font-style: italic; color: #666;">This is like handing your written order to the waiter!</p>
+                    <div class="code-box">fetch("https://api.example.com/data")</div>
+                    <p style="margin-top: 15px; font-style: italic; color: #666;">Think of this as placing your order at a restaurant!</p>
                 </div>
 
                 <div class="part-card">
-                    <h3><span class="part-icon">📥</span> Part B: Receive the Response</h3>
-                    <p>The server sends back TWO things:</p>
-                    <p><strong>1. Status Code</strong> - Did it work?</p>
-                    <p><strong>2. The Data</strong> - Your requested information in JSON format</p>
-                    <p style="margin-top: 15px; font-style: italic; color: #666;">This is like the waiter bringing your food or saying "Sorry, we're out!"</p>
+                    <h3><span class="part-icon">📥</span> Receiving the Response</h3>
+                    <p>The server processes your request and sends back a response containing:</p>
+                    <p><strong>1. Status Code</strong> - A number telling you if it worked (200 = success!)</p>
+                    <p><strong>2. Response Data</strong> - The actual information you requested, usually in JSON format</p>
+                    <p style="margin-top: 15px; font-style: italic; color: #666;">This is like getting your food delivered to your table, or being told they're out of that dish!</p>
                 </div>
             </div>
         </div>
 
         <div class="step-section">
             <h2>Understanding Status Codes</h2>
-            <p>The server always tells you if your request worked with a status code:</p>
+            <p>Every response includes a status code that tells you what happened:</p>
             <div class="status-grid">
                 <div class="status-card status-200">
                     <h4>200</h4>
-                    <p><strong>✅ OK</strong></p>
-                    <p>Success! Here's your data</p>
+                    <p><strong>✅ OK - Success!</strong></p>
+                    <p>Your request worked perfectly. Here's your data!</p>
                 </div>
                 <div class="status-card status-404">
                     <h4>404</h4>
                     <p><strong>🤷 Not Found</strong></p>
-                    <p>That data doesn't exist</p>
+                    <p>That resource doesn't exist on the server</p>
                 </div>
                 <div class="status-card status-401">
                     <h4>401</h4>
                     <p><strong>🔒 Unauthorized</strong></p>
-                    <p>Wrong API key</p>
+                    <p>You need proper credentials or API key</p>
                 </div>
             </div>
-            <p style="color: #002D62; font-weight: bold; margin-top: 20px;">Always check the status code first! 200 = Success!</p>
+            <p style="color: #002D62; font-weight: bold; margin-top: 20px; text-align: center;">💡 Pro Tip: Always check the status code first before trying to use the data!</p>
         </div>
 
         <div class="interactive-demo">
-            <h2>🏟️ Try It Yourself: NorCal Stadium API</h2>
-            <p class="demo-description">Practice making API calls to get information about 5 major NorCal stadiums!</p>
+            <h2>🏟️ Practice with NorCal Sports Stadiums</h2>
+            <p class="demo-description">
+                Try making real API calls to get information about famous Northern California sports stadiums! 
+                Each stadium has its own endpoint code. Type the request format below and see the response come back just like it would in a real application.
+            </p>
             
             <div class="stadium-grid">
                 <div class="stadium-card">
                     <h3>🏟️ Levi's Stadium</h3>
-                    <p>San Francisco 49ers (NFL)</p>
+                    <p class="team-info">San Francisco 49ers</p>
+                    <p class="location-info">📍 Santa Clara, CA • NFL</p>
                     <div class="api-code">levis</div>
                 </div>
                 <div class="stadium-card">
                     <h3>⚾ Oracle Park</h3>
-                    <p>SF Giants (MLB)</p>
+                    <p class="team-info">San Francisco Giants</p>
+                    <p class="location-info">📍 San Francisco, CA • MLB</p>
                     <div class="api-code">oracle</div>
                 </div>
                 <div class="stadium-card">
                     <h3>🏀 Chase Center</h3>
-                    <p>Golden State Warriors (NBA)</p>
+                    <p class="team-info">Golden State Warriors</p>
+                    <p class="location-info">📍 San Francisco, CA • NBA</p>
                     <div class="api-code">chase</div>
                 </div>
                 <div class="stadium-card">
                     <h3>⚾ Oakland Coliseum</h3>
-                    <p>Oakland Athletics (MLB)</p>
+                    <p class="team-info">Oakland Athletics</p>
+                    <p class="location-info">📍 Oakland, CA • MLB</p>
                     <div class="api-code">coliseum</div>
                 </div>
                 <div class="stadium-card">
                     <h3>⚽ PayPal Park</h3>
-                    <p>San Jose Earthquakes (MLS)</p>
+                    <p class="team-info">San Jose Earthquakes</p>
+                    <p class="location-info">📍 San Jose, CA • MLS</p>
                     <div class="api-code">paypal</div>
                 </div>
             </div>
 
             <div class="code-input-section">
-                <h3>📝 Enter Your API Call</h3>
+                <h3>📝 Make Your API Call</h3>
                 <p style="text-align: center; margin-bottom: 15px;">
-                    Type the code format: <code style="background: #e9ecef; padding: 3px 8px; border-radius: 4px;">requests.get("stadium_code")</code>
+                    Use this format: <code style="background: #e9ecef; padding: 3px 8px; border-radius: 4px;">requests.get("stadium_code")</code>
                 </p>
                 <div class="input-row">
                     <input type="text" 
@@ -683,25 +697,28 @@ footer:
                     <button class="fetch-btn" onclick="fetchStadium()">🚀 Send Request</button>
                 </div>
                 <p style="text-align: center; color: #666; font-size: 0.9em; margin-top: 10px;">
-                    Example: Type <strong>requests.get("chase")</strong> to get Chase Center info
+                    💡 Try: <strong>requests.get("chase")</strong> to get Chase Center information
                 </p>
             </div>
 
-            <div id="apiResponse" class="response-output">Waiting for your API request...
+            <div id="apiResponse" class="response-output">⏳ Waiting for your API request...
 
-Try typing: requests.get("levis") or requests.get("oracle")</div>
+Examples to try:
+• requests.get("levis") - Get 49ers stadium info
+• requests.get("oracle") - Get Giants stadium info
+• requests.get("warriors") - This will return a 404 error!</div>
         </div>
 
         <div class="quiz-section">
             <h2>🎯 Test Your Knowledge</h2>
             
             <div class="quiz-question active" id="q1">
-                <div class="question-text">Question 1: What are the TWO things the server sends back in Step 3?</div>
+                <div class="question-text">Question 1: What TWO things does a server send back in every API response?</div>
                 <div class="quiz-option" onclick="checkAnswer(1, 0, false)">
                     A) Username and Password
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(1, 1, true)">
-                    B) Status Code and Data
+                    B) Status Code and Response Data
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(1, 2, false)">
                     C) Website URL and Images
@@ -718,39 +735,68 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 <div class="quiz-option" onclick="checkAnswer(2, 0, false)">
                     A) Error - data not found
                 </div>
-                <div class="quiz-option" onclick="checkAnswer(2, 1, false)">
-                    C) Permission denied
-                </div>
-                <div class="quiz-option" onclick="checkAnswer(2, 2, true)">
+                <div class="quiz-option" onclick="checkAnswer(2, 1, true)">
                     B) Success - here's your data!
+                </div>
+                <div class="quiz-option" onclick="checkAnswer(2, 2, false)">
+                    C) Permission denied
                 </div>
                 <div class="quiz-option" onclick="checkAnswer(2, 3, false)">
                     D) Server is down
                 </div>
                 <div class="feedback" id="feedback2"></div>
-                <button class="next-btn" id="next2" onclick="showResults()">See Results →</button>
+                <button class="next-btn" id="next2" onclick="nextQuestion(3)">Next Question →</button>
+            </div>
+
+            <div class="quiz-question" id="q3">
+                <div class="question-text">Question 3: In Python, which method is commonly used to send a GET request?</div>
+                <div class="quiz-option" onclick="checkAnswer(3, 0, false)">
+                    A) send.request()
+                </div>
+                <div class="quiz-option" onclick="checkAnswer(3, 1, false)">
+                    B) api.call()
+                </div>
+                <div class="quiz-option" onclick="checkAnswer(3, 2, true)">
+                    C) requests.get()
+                </div>
+                <div class="quiz-option" onclick="checkAnswer(3, 3, false)">
+                    D) fetch.data()
+                </div>
+                <div class="feedback" id="feedback3"></div>
+                <button class="next-btn" id="next3" onclick="showResults()">See Results →</button>
             </div>
 
             <div class="quiz-results" id="results">
                 <h3 style="font-size: 2em;">🎉 Quiz Complete!</h3>
-                <div class="score" id="finalScore">0/2</div>
+                <div class="score" id="finalScore">0/3</div>
                 <p id="scoreMessage" style="font-size: 1.2em;"></p>
                 <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
             </div>
         </div>
 
         <div class="key-learning">
-            <h3>🎯 Key Learning</h3>
-            <p>Step 3 is where you actually talk to the server using code. You send your request with requests.get(), and the server responds with a status code (200 = success!) and your data in JSON format.</p>
+            <h3>🎯 Key Takeaways</h3>
             
-            <div class="remember-box">
-                <strong style="font-size: 1.2em; display: block; margin-bottom: 10px;">Remember:</strong>
-                <ul>
-                    <li>Use code like requests.get() to send your request</li>
-                    <li>Always check the status code first</li>
-                    <li>200 means success - you got your data!</li>
-                    <li>Handle errors - don't assume it will always work</li>
-                </ul>
+            <div class="takeaway-grid">
+                <div class="takeaway-card">
+                    <h4>📤 Sending Requests</h4>
+                    <p>Use methods like <code>requests.get()</code> to send your request to the server with the proper URL and parameters</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h4>📥 Receiving Responses</h4>
+                    <p>The server responds with a status code (200 = success!) and the actual data you requested</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h4>🔢 Status Codes Matter</h4>
+                    <p>Always check the status code first! 200 means success, 404 means not found, 401 means unauthorized</p>
+                </div>
+                
+                <div class="takeaway-card">
+                    <h4>🛡️ Error Handling</h4>
+                    <p>Never assume your request will work - always handle errors and check status codes before using data</p>
+                </div>
             </div>
         </div>
     </div>
@@ -766,7 +812,8 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 location: "Santa Clara, CA",
                 opened: 2014,
                 surface: "Grass",
-                superbowls_hosted: 1
+                superbowls_hosted: 1,
+                notable: "Home to Super Bowl 50"
             },
             oracle: {
                 name: "Oracle Park",
@@ -777,7 +824,8 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 location: "San Francisco, CA",
                 opened: 2000,
                 surface: "Grass",
-                world_series: 3
+                world_series: 3,
+                notable: "McCovey Cove beyond right field"
             },
             chase: {
                 name: "Chase Center",
@@ -788,7 +836,8 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 location: "San Francisco, CA",
                 opened: 2019,
                 surface: "Hardwood",
-                championships: 7
+                championships: 7,
+                notable: "Newest arena in the Bay Area"
             },
             coliseum: {
                 name: "Oakland Coliseum",
@@ -799,7 +848,8 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 location: "Oakland, CA",
                 opened: 1966,
                 surface: "Grass",
-                world_series: 4
+                world_series: 4,
+                notable: "One of the last multi-purpose stadiums"
             },
             paypal: {
                 name: "PayPal Park",
@@ -810,7 +860,8 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
                 location: "San Jose, CA",
                 opened: 2015,
                 surface: "Grass",
-                mls_cups: 2
+                mls_cups: 2,
+                notable: "First pro soccer-specific stadium in Bay Area"
             }
         };
 
@@ -837,7 +888,7 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
             const response = {
                 status: 200,
                 statusText: "OK",
-                message: "Success",
+                message: "Success! Data retrieved.",
                 data: stadiumData[stadiumCode],
                 timestamp: new Date().toISOString()
             };
@@ -865,12 +916,12 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
             } else {
                 options[optionIndex].classList.add('incorrect');
                 feedback.className = 'feedback incorrect show';
-                feedback.textContent = '❌ Not quite. Review the lesson above!';
+                feedback.textContent = '❌ Not quite. The correct answer is highlighted in green!';
                 
-                options.forEach((opt) => {
-                    if (opt.textContent.includes('B)')) {
-                        opt.classList.add('correct');
-                    }
+                options.forEach((opt, idx) => {
+                    if (questionNum === 1 && idx === 1) opt.classList.add('correct');
+                    if (questionNum === 2 && idx === 1) opt.classList.add('correct');
+                    if (questionNum === 3 && idx === 2) opt.classList.add('correct');
                 });
             }
             
@@ -884,6 +935,43 @@ Try typing: requests.get("levis") or requests.get("oracle")</div>
         }
 
         function showResults() {
-            document.getElementById('q2').classList.remove('active');
+            document.getElementById(`q${currentQuestion}`).classList.remove('active');
             document.getElementById('results').classList.add('show');
-            document.getElementById('finalScore
+            document.getElementById('finalScore').textContent = `${score}/3`;
+            
+            const messageEl = document.getElementById('scoreMessage');
+            if (score === 3) {
+                messageEl.textContent = '🌟 Perfect score! You mastered sending and receiving API responses!';
+            } else if (score === 2) {
+                messageEl.textContent = '👍 Great job! You understand the basics well!';
+            } else if (score === 1) {
+                messageEl.textContent = '📚 Good start! Review the lesson and try again!';
+            } else {
+                messageEl.textContent = '💪 Keep learning! Review the material above and try again!';
+            }
+        }
+
+        function restartQuiz() {
+            score = 0;
+            currentQuestion = 1;
+            
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('q1').classList.add('active');
+            
+            for (let i = 1; i <= 3; i++) {
+                const question = document.getElementById(`q${i}`);
+                const options = question.querySelectorAll('.quiz-option');
+                const feedback = document.getElementById(`feedback${i}`);
+                const nextBtn = document.getElementById(`next${i}`);
+                
+                options.forEach(opt => {
+                    opt.classList.remove('disabled', 'correct', 'incorrect');
+                });
+                
+                feedback.className = 'feedback';
+                nextBtn.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>
