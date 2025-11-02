@@ -16,6 +16,7 @@ footer:
   home: /west-coast/sports/
   next: /west-coast/backend/submodule_4/
 ---
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +33,9 @@ footer:
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
-            color: #333;
             padding: 20px;
-            line-height: 1.6;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
         .container {
@@ -48,14 +48,14 @@ footer:
         }
 
         .header {
-            background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
+            background: linear-gradient(135deg, #002D62 0%, #A2AAAD 100%);
             color: white;
-            padding: 40px;
+            padding: 30px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             margin-bottom: 10px;
         }
 
@@ -67,26 +67,25 @@ footer:
         .concept-box {
             background: #ffffff;
             padding: 25px;
-            border-left: 5px solid #B3995D;
+            border-left: 5px solid #FFC425;
             margin: 25px;
             border-radius: 8px;
         }
 
         .concept-box h2 {
-            color: #AA0000 !important;
-            margin-bottom: 15px;
+            color: #002D62 !important;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
         .concept-box p {
             color: #000000 !important;
-            line-height: 1.8;
+            line-height: 1.6;
             font-weight: 500;
-            font-size: 1.05em;
         }
 
         .concept-box strong {
-            color: #AA0000 !important;
+            color: #000000 !important;
         }
 
         .step-section {
@@ -95,13 +94,20 @@ footer:
             margin: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border: 3px solid #B3995D;
+            border: 3px solid #002D62;
         }
 
         .step-section h2 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             margin-bottom: 25px;
             font-size: 1.8em;
+            text-align: center;
+        }
+
+        .step-section > p {
+            color: #000000 !important;
+            line-height: 1.8;
+            margin-bottom: 15px;
             text-align: center;
         }
 
@@ -116,18 +122,17 @@ footer:
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 25px;
             border-radius: 12px;
-            border: 3px solid #dee2e6;
+            border: 2px solid #dee2e6;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .part-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(170, 0, 0, 0.2);
-            border-color: #B3995D;
+            box-shadow: 0 8px 20px rgba(0, 45, 98, 0.15);
         }
 
         .part-card h3 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             margin-bottom: 15px;
             font-size: 1.4em;
             display: flex;
@@ -220,13 +225,13 @@ footer:
             margin: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border: 3px solid #AA0000;
+            border: 3px solid #FFC425;
         }
 
         .interactive-demo h2 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.8em;
         }
 
@@ -246,21 +251,21 @@ footer:
 
         .stadium-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
-            border: 3px solid #dee2e6;
+            border: 2px solid #dee2e6;
             text-align: center;
             transition: all 0.3s;
         }
 
         .stadium-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(170, 0, 0, 0.2);
-            border-color: #B3995D;
+            box-shadow: 0 8px 20px rgba(0, 45, 98, 0.15);
+            border-color: #FFC425;
         }
 
         .stadium-card h3 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             margin-bottom: 10px;
             font-size: 1.2em;
         }
@@ -287,13 +292,17 @@ footer:
             padding: 25px;
             border-radius: 10px;
             margin: 25px 0;
-            border: 2px solid #B3995D;
+            border: 2px solid #FFC425;
         }
 
         .code-input-section h3 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             margin-bottom: 15px;
             text-align: center;
+        }
+
+        .code-input-section > p {
+            color: #495057 !important;
         }
 
         .input-row {
@@ -304,33 +313,35 @@ footer:
 
         .code-input {
             flex: 1;
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #dee2e6;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: 'Courier New', monospace;
             font-size: 1em;
+            transition: border-color 0.3s;
         }
 
         .code-input:focus {
             outline: none;
-            border-color: #B3995D;
+            border-color: #FFC425;
         }
 
         .fetch-btn {
-            background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
+            background: linear-gradient(135deg, #002D62 0%, #FFC425 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
+            padding: 15px 30px;
+            border-radius: 10px;
             font-size: 1em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         .fetch-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(170, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 45, 98, 0.3);
         }
 
         .response-output {
@@ -347,7 +358,7 @@ footer:
         }
 
         .response-output.error {
-            background: #dc3545;
+            background: #e74c3c;
             color: white;
         }
 
@@ -372,11 +383,11 @@ footer:
             margin: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border: 3px solid #B3995D;
+            border: 3px solid #FFC425;
         }
 
         .quiz-section h2 {
-            color: #AA0000 !important;
+            color: #002D62 !important;
             text-align: center;
             margin-bottom: 30px;
             font-size: 1.8em;
@@ -410,10 +421,11 @@ footer:
             margin: 10px 0;
             transition: all 0.3s;
             font-size: 1.05em;
+            color: #333 !important;
         }
 
         .quiz-option:hover {
-            border-color: #B3995D;
+            border-color: #FFC425;
             background: #fff9e6;
         }
 
@@ -460,8 +472,8 @@ footer:
         }
 
         .next-btn {
-            background: #B3995D;
-            color: white;
+            background: #FFC425;
+            color: #002D62;
             border: none;
             padding: 12px 30px;
             border-radius: 8px;
@@ -469,6 +481,7 @@ footer:
             cursor: pointer;
             margin-top: 15px;
             display: none;
+            transition: all 0.3s;
         }
 
         .next-btn.show {
@@ -476,7 +489,8 @@ footer:
         }
 
         .next-btn:hover {
-            background: #9d864f;
+            background: #ffb700;
+            transform: translateY(-2px);
         }
 
         .quiz-results {
@@ -489,46 +503,52 @@ footer:
             display: block;
         }
 
+        .quiz-results h3 {
+            color: #002D62 !important;
+        }
+
         .score {
             font-size: 3em;
-            color: #AA0000;
+            color: #002D62;
             font-weight: bold;
             margin: 20px 0;
         }
 
         .restart-btn {
-            background: #B3995D;
+            background: linear-gradient(135deg, #002D62 0%, #FFC425 100%);
             padding: 15px 40px;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
             font-size: 1.1em;
             margin-top: 20px;
+            transition: all 0.3s;
         }
 
         .restart-btn:hover {
-            background: #9d864f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 45, 98, 0.3);
         }
 
         .key-learning {
-            background: linear-gradient(135deg, #AA0000 0%, #B3995D 100%);
+            background: linear-gradient(135deg, #002D62 0%, #FFC425 100%);
             color: white;
-            padding: 30px;
+            padding: 25px;
             margin: 25px;
             border-radius: 12px;
             text-align: center;
         }
 
         .key-learning h3 {
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-size: 1.3em;
         }
 
         .key-learning p {
-            font-size: 1.1em;
-            line-height: 1.8;
+            font-size: 1.05em;
+            line-height: 1.6;
         }
 
         .remember-box {
@@ -552,6 +572,10 @@ footer:
             content: "✓ ";
             font-weight: bold;
             margin-right: 8px;
+        }
+
+        #scoreMessage {
+            color: #495057 !important;
         }
     </style>
 </head>
@@ -592,7 +616,7 @@ footer:
 
         <div class="step-section">
             <h2>Understanding Status Codes</h2>
-            <p style="text-align: center; color: #495057; margin-bottom: 25px;">The server always tells you if your request worked with a status code:</p>
+            <p>The server always tells you if your request worked with a status code:</p>
             <div class="status-grid">
                 <div class="status-card status-200">
                     <h4>200</h4>
@@ -610,7 +634,7 @@ footer:
                     <p>Wrong API key</p>
                 </div>
             </div>
-            <p style="text-align: center; color: #AA0000; font-weight: bold; margin-top: 20px;">Always check the status code first! 200 = Success!</p>
+            <p style="color: #002D62; font-weight: bold; margin-top: 20px;">Always check the status code first! 200 = Success!</p>
         </div>
 
         <div class="interactive-demo">
@@ -647,7 +671,7 @@ footer:
 
             <div class="code-input-section">
                 <h3>📝 Enter Your API Call</h3>
-                <p style="text-align: center; color: #495057; margin-bottom: 15px;">
+                <p style="text-align: center; margin-bottom: 15px;">
                     Type the code format: <code style="background: #e9ecef; padding: 3px 8px; border-radius: 4px;">requests.get("stadium_code")</code>
                 </p>
                 <div class="input-row">
@@ -663,11 +687,9 @@ footer:
                 </p>
             </div>
 
-            <div id="apiResponse" class="response-output">
-Waiting for your API request...
+            <div id="apiResponse" class="response-output">Waiting for your API request...
 
-Try typing: requests.get("levis") or requests.get("oracle")
-            </div>
+Try typing: requests.get("levis") or requests.get("oracle")</div>
         </div>
 
         <div class="quiz-section">
@@ -710,9 +732,9 @@ Try typing: requests.get("levis") or requests.get("oracle")
             </div>
 
             <div class="quiz-results" id="results">
-                <h3 style="color: #AA0000; font-size: 2em;">🎉 Quiz Complete!</h3>
+                <h3 style="font-size: 2em;">🎉 Quiz Complete!</h3>
                 <div class="score" id="finalScore">0/2</div>
-                <p id="scoreMessage" style="font-size: 1.2em; color: #666;"></p>
+                <p id="scoreMessage" style="font-size: 1.2em;"></p>
                 <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
             </div>
         </div>
@@ -796,7 +818,6 @@ Try typing: requests.get("levis") or requests.get("oracle")
             const input = document.getElementById('apiInput').value.trim();
             const output = document.getElementById('apiResponse');
 
-            // Parse the input
             const match = input.match(/requests\.get\s*\(\s*["']([^"']+)["']\s*\)/);
             
             if (!match) {
@@ -813,7 +834,6 @@ Try typing: requests.get("levis") or requests.get("oracle")
                 return;
             }
 
-            // Success response
             const response = {
                 status: 200,
                 statusText: "OK",
@@ -866,38 +886,4 @@ Try typing: requests.get("levis") or requests.get("oracle")
         function showResults() {
             document.getElementById('q2').classList.remove('active');
             document.getElementById('results').classList.add('show');
-            document.getElementById('finalScore').textContent = `${score}/2`;
-            
-            const message = document.getElementById('scoreMessage');
-            if (score === 2) {
-                message.textContent = '🌟 Perfect! You understand Step 3!';
-                message.style.color = '#28a745';
-            } else if (score === 1) {
-                message.textContent = '👍 Good start! Review the lesson to master it.';
-                message.style.color = '#ffc107';
-            } else {
-                message.textContent = '📚 Keep learning! Try reading through the lesson again.';
-                message.style.color = '#dc3545';
-            }
-        }
-
-        function restartQuiz() {
-            score = 0;
-            currentQuestion = 1;
-            
-            document.querySelectorAll('.quiz-question').forEach(q => {
-                q.classList.remove('active');
-                const options = q.querySelectorAll('.quiz-option');
-                options.forEach(opt => {
-                    opt.classList.remove('correct', 'incorrect', 'disabled');
-                });
-                q.querySelector('.feedback').classList.remove('show');
-                q.querySelector('.next-btn').classList.remove('show');
-            });
-            
-            document.getElementById('q1').classList.add('active');
-            document.getElementById('results').classList.remove('show');
-        }
-    </script>
-</body>
-</html>
+            document.getElementById('finalScore
