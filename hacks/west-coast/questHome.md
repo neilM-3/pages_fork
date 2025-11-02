@@ -33,7 +33,6 @@ lxdData:
       Level: 3
       Description: "Learn about how to visualize data from various sources for effective representation and application, such as machine learning"
       Categories: ["Visualization", "ML", "Collation"]
-      Video: "/west-coast/data-viz-video"
       Lessons: "/west-coast/sports/"
       Image: "/images/west-coast/data-viz.svg"
       Alt: "CS Portfolio Quest Data Visualization"
