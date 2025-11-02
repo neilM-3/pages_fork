@@ -48,19 +48,9 @@
             <span class="status-badge status-locked module-badge">Locked</span>
           </div>
           
-          <!-- Image with Play Overlay -->
+          <!-- Image -->
           <div class="relative h-40 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 mb-4">
-            <a href="{{ topic.Video }}" class="block w-full h-full group video-link">
-              <img src="{{ site.baseurl }}/{{ module_image }}" alt="{{ topic.Alt }}" class="w-full h-full object-contain transition-all duration-300 group-hover:scale-110">
-              <!-- Play Button Overlay -->
-              <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div class="iridescent bg-white bg-opacity-90 rounded-full p-3">
-                  <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M8 5v10l8-5z"/>
-                  </svg>
-                </div>
-              </div>
-            </a>
+            <img src="{{ site.baseurl }}/{{ module_image }}" alt="{{ topic.Alt }}" class="w-full h-full object-contain transition-all duration-300 group-hover:scale-110">
           </div>
           
           <!-- Module Progress Bar -->
@@ -84,7 +74,7 @@
             </div>
             <div class="flex gap-2">
               <a href="{{ site.baseurl }}{{ topic.Lessons }}" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition lesson-link">Start Module</a>
-              <a href="{{ topic.Video }}" class="iridescent flex-1 text-white text-center py-2 rounded-lg font-semibold transition video-link">Watch Video</a>
+           
             </div>
           </div>
         </div>
