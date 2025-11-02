@@ -450,7 +450,7 @@ footer:
                     <div class="team-icon">🏀</div>
                     <div class="team-name">LA Clippers</div>
                     <div class="stadium-name">Intuit Dome</div>
-                    <div class="team-url" id="clippers-url">https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Clippers</div>
+                    <div class="team-url" id="clippers-url">https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Los%20Angeles%20Clippers</div>
                     <button class="copy-button" onclick="copyURL('clippers-url')">📋 Copy URL</button>
                 </div>
 
@@ -484,35 +484,131 @@ footer:
             <h2>✏️ Practice: Build Your Own URL</h2>
             
             <div class="build-area">
-                <p>Now it's your turn! Fill in the blanks to create an API URL for the LA Lakers.</p>
+                <p>Now it's your turn! Fill in the blanks to create an API URL for the LA Clippers.</p>
                 
                 <div class="build-step">
                     <div class="step-label">Step 1: Base URL</div>
-                    <input type="text" class="step-input" id="base-url" placeholder="Enter the base URL...">
+                    <input type="text" class="step-input" id="base-url-1" placeholder="Enter the base URL...">
                 </div>
 
                 <div class="build-step">
                     <div class="step-label">Step 2: API Key</div>
-                    <input type="text" class="step-input" id="api-key" placeholder="Enter your API key...">
+                    <input type="text" class="step-input" id="api-key-1" placeholder="Enter your API key...">
                 </div>
 
                 <div class="build-step">
                     <div class="step-label">Step 3: Endpoint</div>
-                    <input type="text" class="step-input" id="endpoint" placeholder="Enter the endpoint...">
+                    <input type="text" class="step-input" id="endpoint-1" placeholder="Enter the endpoint...">
                 </div>
 
                 <div class="build-step">
                     <div class="step-label">Step 4: Team Parameter</div>
-                    <input type="text" class="step-input" id="parameter" placeholder="Enter ?t=TeamName...">
+                    <input type="text" class="step-input" id="parameter-1" placeholder="Enter ?t=TeamName...">
                 </div>
 
                 <div class="build-step">
                     <div class="step-label">Your Complete URL:</div>
-                    <div class="url-output" id="built-url">Fill in the fields above to build your URL...</div>
+                    <div class="url-output" id="built-url-1">Fill in the fields above to build your URL...</div>
                 </div>
 
-                <button class="check-button" style="width: 100%; padding: 15px;" onclick="checkBuiltURL()">✅ Check My URL</button>
-                <div class="feedback" id="build-feedback"></div>
+                <button class="check-button" style="width: 100%; padding: 15px;" onclick="checkBuiltURL(1)">✅ Check My URL</button>
+                <div class="feedback" id="build-feedback-1"></div>
+            </div>
+
+            <div class="build-area">
+                <p>Now it's your turn! Fill in the blanks to create an API URL for the LA Dodgers.</p>
+                
+                <div class="build-step">
+                    <div class="step-label">Step 1: Base URL</div>
+                    <input type="text" class="step-input" id="base-url-2" placeholder="Enter the base URL...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 2: API Key</div>
+                    <input type="text" class="step-input" id="api-key-2" placeholder="Enter your API key...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 3: Endpoint</div>
+                    <input type="text" class="step-input" id="endpoint-2" placeholder="Enter the endpoint...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 4: Team Parameter</div>
+                    <input type="text" class="step-input" id="parameter-2" placeholder="Enter ?t=TeamName...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Your Complete URL:</div>
+                    <div class="url-output" id="built-url-2">Fill in the fields above to build your URL...</div>
+                </div>
+
+                <button class="check-button" style="width: 100%; padding: 15px;" onclick="checkBuiltURL(2)">✅ Check My URL</button>
+                <div class="feedback" id="build-feedback-2"></div>
+            </div>
+
+            <div class="build-area">
+                <p>Now it's your turn! Fill in the blanks to create an API URL for the LA Chargers.</p>
+                
+                <div class="build-step">
+                    <div class="step-label">Step 1: Base URL</div>
+                    <input type="text" class="step-input" id="base-url-3" placeholder="Enter the base URL...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 2: API Key</div>
+                    <input type="text" class="step-input" id="api-key-3" placeholder="Enter your API key...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 3: Endpoint</div>
+                    <input type="text" class="step-input" id="endpoint-3" placeholder="Enter the endpoint...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 4: Team Parameter</div>
+                    <input type="text" class="step-input" id="parameter-3" placeholder="Enter ?t=TeamName...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Your Complete URL:</div>
+                    <div class="url-output" id="built-url-3">Fill in the fields above to build your URL...</div>
+                </div>
+
+                <button class="check-button" style="width: 100%; padding: 15px;" onclick="checkBuiltURL(3)">✅ Check My URL</button>
+                <div class="feedback" id="build-feedback-3"></div>
+            </div>
+
+            <div class="build-area">
+                <p>Now it's your turn! Fill in the blanks to create an API URL for the USC Trojans.</p>
+                
+                <div class="build-step">
+                    <div class="step-label">Step 1: Base URL</div>
+                    <input type="text" class="step-input" id="base-url-4" placeholder="Enter the base URL...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 2: API Key</div>
+                    <input type="text" class="step-input" id="api-key-4" placeholder="Enter your API key...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 3: Endpoint</div>
+                    <input type="text" class="step-input" id="endpoint-4" placeholder="Enter the endpoint...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Step 4: Team Parameter</div>
+                    <input type="text" class="step-input" id="parameter-4" placeholder="Enter ?t=TeamName...">
+                </div>
+
+                <div class="build-step">
+                    <div class="step-label">Your Complete URL:</div>
+                    <div class="url-output" id="built-url-4">Fill in the fields above to build your URL...</div>
+                </div>
+
+                <button class="check-button" style="width: 100%; padding: 15px;" onclick="checkBuiltURL(4)">✅ Check My URL</button>
+                <div class="feedback" id="build-feedback-4"></div>
             </div>
         </div>
 
@@ -561,16 +657,18 @@ footer:
         }
 
         // Update built URL as user types
-        document.getElementById('base-url')?.addEventListener('input', updateBuiltURL);
-        document.getElementById('api-key')?.addEventListener('input', updateBuiltURL);
-        document.getElementById('endpoint')?.addEventListener('input', updateBuiltURL);
-        document.getElementById('parameter')?.addEventListener('input', updateBuiltURL);
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`base-url-${i}`)?.addEventListener('input', () => updateBuiltURL(i));
+            document.getElementById(`api-key-${i}`)?.addEventListener('input', () => updateBuiltURL(i));
+            document.getElementById(`endpoint-${i}`)?.addEventListener('input', () => updateBuiltURL(i));
+            document.getElementById(`parameter-${i}`)?.addEventListener('input', () => updateBuiltURL(i));
+        }
 
-        function updateBuiltURL() {
-            const base = document.getElementById('base-url').value;
-            const key = document.getElementById('api-key').value;
-            const endpoint = document.getElementById('endpoint').value;
-            const param = document.getElementById('parameter').value;
+        function updateBuiltURL(num) {
+            const base = document.getElementById(`base-url-${num}`).value;
+            const key = document.getElementById(`api-key-${num}`).value;
+            const endpoint = document.getElementById(`endpoint-${num}`).value;
+            const param = document.getElementById(`parameter-${num}`).value;
             
             let url = '';
             if (base) url += base;
@@ -578,17 +676,36 @@ footer:
             if (endpoint) url += endpoint;
             if (param) url += param;
             
-            document.getElementById('built-url').textContent = url || 'Fill in the fields above to build your URL...';
+            document.getElementById(`built-url-${num}`).textContent = url || 'Fill in the fields above to build your URL...';
         }
 
-        function checkBuiltURL() {
-            const builtURL = document.getElementById('built-url').textContent.trim();
-            const correctURL = 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Lakers';
-            const feedback = document.getElementById('build-feedback');
+        function checkBuiltURL(num) {
+            const builtURL = document.getElementById(`built-url-${num}`).textContent.trim();
+            const feedback = document.getElementById(`build-feedback-${num}`);
             
-            if (builtURL.toLowerCase() === correctURL.toLowerCase()) {
+            const correctURLs = {
+                1: 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Los%20Angeles%20Clippers',
+                2: 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Dodgers',
+                3: 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Chargers',
+                4: 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=USC'
+            };
+            
+            const teamNames = {
+                1: 'Clippers',
+                2: 'Dodgers',
+                3: 'Chargers',
+                4: 'USC'
+            };
+            
+            const correctURL = correctURLs[num];
+            const alt1 = correctURL.replace('%20', '+');
+            const alt2 = correctURL.replace(/%20/g, ' ');
+            
+            if (builtURL.toLowerCase() === correctURL.toLowerCase() || 
+                builtURL.toLowerCase() === alt1.toLowerCase() || 
+                builtURL.toLowerCase() === alt2.toLowerCase()) {
                 feedback.className = 'feedback correct';
-                feedback.textContent = '🎉 Perfect! You built the Lakers API URL correctly! Try copying and testing it in your browser.';
+                feedback.textContent = `🎉 Perfect! You built the ${teamNames[num]} API URL correctly! Try copying and testing it in your browser.`;
             } else {
                 feedback.className = 'feedback incorrect';
                 feedback.textContent = `❌ Not quite right. The correct answer is: ${correctURL}`;
