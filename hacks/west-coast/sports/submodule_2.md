@@ -1,4 +1,23 @@
-<!DOCTYPE html>
+---
+layout: opencs
+title: "Los Angeles"
+description: "Submodule 2 of Backend Development Mini-Quest"
+permalink: /west-coast/backend/submodule_2/
+parent: "Backend Development"
+team: "Zombies"
+submodule: 2
+categories: [CSP, Submodule, Backend]
+tags: [backend, submodule, zombies]
+author: "Zombies Team"
+date: 2025-10-21
+microblog: True
+footer:
+  previous: /west-coast/backend/submodule_1/
+  home: /west-coast/sports/
+  next: /west-coast/backend/submodule_3/
+---
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
